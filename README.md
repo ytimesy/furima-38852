@@ -28,7 +28,7 @@
 | category_id         | integer      | null: false                    |
 | status_id           | integer      | null: false                    |
 | deliveryfee_type_id | integer      | null: false                    |
-| delivery_from_id    | integer      | null: false                    |
+| prefecture_id       | integer      | null: false                    |
 | delivery_when_id    | integer      | null: false                    |
 | itemfee             | integer      | null: false                    |
 | user                | references   | null: false, foreign_key: true |
@@ -44,7 +44,7 @@
 | Column             | Type         | Options                        |
 | ------------------ | ------------ | ------------------------------ |
 | postcode           | string       | null: false                    |
-| prefecture         | string       | null: false                    |
+| prefecture_id      | string       | null: false                    |
 | city               | string       | null: false                    |
 | address            | string       | null: false                    |
 | building           | string       |                                |
