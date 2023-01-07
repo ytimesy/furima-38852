@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :deliverys
+- has_many :purchases
 
 
 ## items テーブル
@@ -36,11 +36,11 @@
 
 ### Association
 
-- has_one    :delivery
+- has_one    :purchase
 - belongs_to :user
 
 
-## deliverys テーブル
+## purchases テーブル
 
 | Column             | Type         | Options                        |
 | ------------------ | ------------ | ------------------------------ |

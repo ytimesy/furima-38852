@@ -37,7 +37,7 @@
                 <mxCell id="5" value="name&#10;image&#10;content&#10;category&#10;status&#10;deliveryfee_type&#10;delivery_from&#10;delivery_when&#10;itemfee&#10;user&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="4" vertex="1">
                     <mxGeometry y="30" width="160" height="150" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="deliverys" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
+                <mxCell id="6" value="purchases" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
                     <mxGeometry x="310" y="290" width="160" height="160" as="geometry"/>
                 </mxCell>
                 <mxCell id="7" value="postcode&#10;prefecture&#10;city&#10;address&#10;building&#10;tel&#10;item&#10;user" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="6" vertex="1">
