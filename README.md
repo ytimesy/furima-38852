@@ -43,16 +43,28 @@
 
 | Column             | Type         | Options                        |
 | ------------------ | ------------ | ------------------------------ |
-| postcode           | string       | null: false                    |
-| prefecture_id      | string       | null: false                    |
-| city               | string       | null: false                    |
-| address            | string       | null: false                    |
-| building           | string       |                                |
-| tel                | string       | null: false                    |
 | item               | references   | null: false, foreign_key: true |
 | user               | references   | null: false, foreign_key: true |
 
 ### Association
 
+- has_one    :delivery
 - belongs_to :item
 - belongs_to :user
+
+
+## deliverys テーブル
+
+| Column             | Type         | Options                        |
+| ------------------ | ------------ | ------------------------------ |
+| postcode           | string       | null: false                    |
+| prefecture_id      | integer      | null: false                    |
+| city               | string       | null: false                    |
+| address            | string       | null: false                    |
+| building           | string       |                                |
+| tel                | string       | null: false                    |
+| purchase           | references   | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :purchase
