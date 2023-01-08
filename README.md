@@ -53,7 +53,7 @@
 - belongs_to :user
 
 
-## deliverys テーブル
+## deliveries テーブル
 
 | Column             | Type         | Options                        |
 | ------------------ | ------------ | ------------------------------ |
