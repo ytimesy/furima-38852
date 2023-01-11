@@ -4,8 +4,8 @@ window.addEventListener('load', function(){
 
   itemPrice.addEventListener("keyup", () => {
     const addTaxPrice = document.getElementById("add-tax-price") 
-    addTaxPrice.innerHTML = `${Math.floor(itemPrice.value*0.1)}`;
+    addTaxPrice.innerHTML = `${Math.floor(itemPrice.value*0.1)}`
     const profit = document.getElementById("profit")
-    profit.innerHTML = `${Math.floor(itemPrice.value*0.9)}`;
-  });
+    profit.innerHTML = `${Math.floor(itemPrice.value*0.9)}`
+  })
 })
