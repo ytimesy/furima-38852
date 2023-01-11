@@ -8,4 +8,5 @@ class Item < ApplicationRecord
   validates :deliveryfee_type_id, presence: true
   validates :prefecture_id,       presence: true
   validates :delivery_when_id,    presence: true
+  validates :itemfee,             presence: true
 end
