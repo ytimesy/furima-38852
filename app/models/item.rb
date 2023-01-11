@@ -6,8 +6,9 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :deliveryfee_type
   belongs_to :prefecture
-  belongs_to :delivery_when_
+  belongs_to :delivery_when
 
+  validates :image,               presence: true
   validates :name,                presence: true
   validates :content,             presence: true
   validates :category_id,         presence: true, numericality: { other_than: 1, message: "can't be blank" }
