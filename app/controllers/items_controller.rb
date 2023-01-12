@@ -22,6 +22,20 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def edit
+    move_to_root_check
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def item_params
@@ -31,6 +45,12 @@ class ItemsController < ApplicationController
   def move_to_users_new
     unless user_signed_in?
       redirect_to new_user_session_path
+    end
+  end
+
+  def move_to_root_check
+    unless current_user == Item.find(params[:id]).user
+      redirect_to root_path
     end
   end
 
