@@ -1,4 +1,6 @@
 class PurchasesController < ApplicationController
+  before_action :move_to_root_check, only:[ :index ]
+  
   def index
     @item = Item.find(params[:id])  #商品情報を取得@item
     @purchase_delivery = PurchaseDelivery.new
@@ -11,7 +13,7 @@ class PurchasesController < ApplicationController
       @purchase_delivery.save
       redirect_to root_path
     else
-      render :new
+      render :index
     end
   end
 
@@ -19,5 +21,26 @@ class PurchasesController < ApplicationController
 
   def purchase_params
     params.require(:purchase_delivery).permit(:postcode, :prefecture_id, :city, :address, :building, :tel).merge(user_id: current_user.id, item_id: @item.id)
+  end
+
+  def move_to_root_check
+    #Sold Out商品は購入できない
+    if user_signed_in?
+      purchases = Purchase.all
+      purchases.each do |purchase|
+        if purchase.item_id == params[:id].to_i
+          redirect_to root_path
+          return
+        end
+      end
+
+      #自身が出品した商品は購入できない
+      item = Item.find(params[:id])
+      if item.user == current_user
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
   end
 end
