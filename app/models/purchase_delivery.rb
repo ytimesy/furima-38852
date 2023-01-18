@@ -1,12 +1,11 @@
 class PurchaseDelivery
   include ActiveModel::Model
-  attr_accessor :postcode, :prefecture_id, :city, :address, :building, :tel, :purchase_id, :user_id, :item_id
+  attr_accessor :postcode, :prefecture_id, :city, :address, :building, :tel, :user_id, :item_id
 
   with_options presence: true do
     validates :city
     validates :address
     validates :tel,       format:{with: /\A[\d]{10,11}\z/, message: "can't be blank"}
-    validates :purchase_id
     validates :user_id
     validates :item_id
     validates :postcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
