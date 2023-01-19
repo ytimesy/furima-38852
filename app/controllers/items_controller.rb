@@ -50,6 +50,17 @@ class ItemsController < ApplicationController
     unless current_user == @item.user
       redirect_to root_path
     end
+
+    #Sold Out商品は編集できない
+    if user_signed_in?
+      purchases = Purchase.all
+      purchases.each do |purchase|
+        if purchase.item.user == current_user
+          redirect_to root_path
+          return
+        end
+      end
+    end
   end
 
   def set_item
