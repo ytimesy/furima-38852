@@ -1,4 +1,5 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user! ,only: [ :index ]
   before_action :move_to_root_check, only:[ :index ]
   
   def index
