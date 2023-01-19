@@ -5,13 +5,13 @@ class PurchaseDelivery
   with_options presence: true do
     validates :city
     validates :address
-    validates :tel,       format:{with: /\A[\d]{10,11}\z/, message: "can't be blank"}
-    validates :user_id
-    validates :item_id
-    validates :postcode, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :tel,       format:{with: /\A[\d]{10,11}\z/}
+    validates :user_id,   numericality: {other_than: 0, message: "can't be blank"}
+    validates :item_id,   numericality: {other_than: 0, message: "can't be blank"}
+    validates :postcode,  format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :token
   end
-  validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
+  validates :prefecture_id, numericality: {other_than: 1, message: "can't be blank"}
 
   def save
     # 購入情報を保存する
