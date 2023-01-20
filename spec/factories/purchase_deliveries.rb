@@ -7,7 +7,5 @@ FactoryBot.define do
     building      {Faker::Lorem.word}
     tel           {'09012345678'}
     token         {Faker::Lorem.characters(number: 10)}
-    user_id       {Faker::Number.between(from: 1, to: 10)}
-    item_id       {Faker::Number.between(from: 11, to: 20)}
   end
 end

@@ -1,14 +1,13 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user! ,only: [ :index ]
+  before_action :set_params, only: [ :index, :create ]
   before_action :move_to_root_check, only:[ :index ]
   
   def index
-    @item = Item.find(params[:id])  #商品情報を取得@item
     @purchase_delivery = PurchaseDelivery.new
   end
 
   def create
-    @item = Item.find(params[:format])
     @purchase_delivery = PurchaseDelivery.new(purchase_params)
     if @purchase_delivery.valid?
       pay_item
@@ -20,6 +19,10 @@ class PurchasesController < ApplicationController
   end
 
   private
+
+  def set_params
+    @item = Item.find(params[:id])
+  end
 
   def purchase_params
     params.require(:purchase_delivery).permit(:postcode, :prefecture_id, :city, :address, :building, :tel).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
