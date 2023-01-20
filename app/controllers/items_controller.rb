@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user! ,except: [ :index, :show ]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
+  before_action :set_purchase, only: [ :index, :show ]
   before_action :move_to_root_check, only:[ :edit, :destroy ]
 
   def index
@@ -46,13 +47,25 @@ class ItemsController < ApplicationController
   end
 
   def move_to_root_check
-    unless current_user == @item.user
+    if user_signed_in? && current_user == @item.user
+      #Sold Out商品は編集できない
+      purchases = Purchase.all
+      purchases.each do |purchase|
+        if purchase.item.id == params[:id].to_i
+          redirect_to root_path
+        end
+      end
+    else
       redirect_to root_path
     end
   end
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_purchase
+    @purchases = Purchase.all
   end
 
 end
