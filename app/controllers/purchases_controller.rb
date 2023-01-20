@@ -21,7 +21,7 @@ class PurchasesController < ApplicationController
   private
 
   def set_params
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:item_id])
   end
 
   def purchase_params
@@ -33,14 +33,14 @@ class PurchasesController < ApplicationController
     if user_signed_in?
       purchases = Purchase.all
       purchases.each do |purchase|
-        if purchase.item_id == params[:id].to_i
+        if purchase.item_id == params[:item_id].to_i
           redirect_to root_path
           return
         end
       end
 
       #自身が出品した商品は購入できない
-      item = Item.find(params[:id])
+      item = Item.find(params[:item_id])
       if item.user == current_user
         redirect_to root_path
       end

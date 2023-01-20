@@ -47,19 +47,16 @@ class ItemsController < ApplicationController
   end
 
   def move_to_root_check
-    unless current_user == @item.user
-      redirect_to root_path
-    end
-
-    #Sold Out商品は編集できない
-    if user_signed_in?
+    if user_signed_in? && current_user == @item.user
+      #Sold Out商品は編集できない
       purchases = Purchase.all
       purchases.each do |purchase|
-        if purchase.item.user == current_user
+        if purchase.item.id == params[:id].to_i
           redirect_to root_path
-          return
         end
       end
+    else
+      redirect_to root_path
     end
   end
 
