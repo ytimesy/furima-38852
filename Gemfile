@@ -68,7 +68,7 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 gem 'active_hash'
 gem 'payjp'
-gem 'date'
+gem 'date', '~> 3.3.3'
 group :production do
   gem 'unicorn', '5.4.1'
 end
